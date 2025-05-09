@@ -134,7 +134,7 @@ To use the server with stdio transport, add this configuration to your MCP clien
 {
   "mcpServers": {
     "rag-search-reranking": {
-      "command": "python",
+      "command": "path/to/venv/Scripts/python.exe",
       "args": ["path/to/rag-mcp-server/main.py"],
       "env": {
         "TRANSPORT": "stdio",

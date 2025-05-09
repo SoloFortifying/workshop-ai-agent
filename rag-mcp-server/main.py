@@ -26,15 +26,14 @@ logging.basicConfig(
     level=logging.INFO,  # Changed to DEBUG for more verbose logging
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('main.log', mode='w'),
-        logging.StreamHandler(sys.stdout)  # Explicitly use stdout
+        logging.StreamHandler(sys.stderr)
     ]
 )
 # Ensure all loggers are verbose
 logging.getLogger().setLevel(logging.INFO)
 
 
-logger = logging.getLogger('reranking_mcp')  # Use a more specific logger name
+logger = logging.getLogger('reranking_mcp')
 
 @dataclass
 class RerankerContext:
