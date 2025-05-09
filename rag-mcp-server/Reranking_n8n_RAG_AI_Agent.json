@@ -11,7 +11,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        300,
+        520,
         300
       ],
       "credentials": {
@@ -35,6 +35,10 @@
               {
                 "name": "file_title",
                 "value": "={{ $('Set File ID').first().json.file_title }}"
+              },
+              {
+                "name": "file_url",
+                "value": "={{ $('Set File ID').first().json.file_url }}"
               }
             ]
           }
@@ -45,7 +49,7 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1,
       "position": [
-        2440,
+        2680,
         1020
       ]
     },
@@ -59,7 +63,7 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1,
       "position": [
-        2280,
+        2520,
         1020
       ],
       "credentials": {
@@ -71,9 +75,9 @@
     },
     {
       "parameters": {
-        "content": "## Tool to Add Google Drive Files to Vector DB with Contextual Embeddings",
+        "content": "## Tool to Add Local Files to Vector DB with Contextual Embeddings",
         "height": 867,
-        "width": 2853,
+        "width": 3033,
         "color": 5
       },
       "id": "60f8945c-deef-4478-b458-ea1a7938bf51",
@@ -95,8 +99,8 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        1100,
-        620
+        1320,
+        760
       ],
       "alwaysOutputData": true
     },
@@ -110,7 +114,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1,
       "position": [
-        480,
+        680,
         300
       ],
       "notesInFlow": false,
@@ -123,9 +127,9 @@
     },
     {
       "parameters": {
-        "content": "## RAG AI Agent with Contextual Retrieval + Reranking",
+        "content": "## RAG AI Agent with Query Expansion + Agentic RAG + Contextual Retrieval + Reranking",
         "height": 485,
-        "width": 856
+        "width": 1356
       },
       "id": "aeb910f4-007e-4f5a-aa56-aab3ac21e7f9",
       "name": "Sticky Note2",
@@ -138,8 +142,10 @@
     },
     {
       "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
         "options": {
-          "systemMessage": "=## Role\n\nYou are a Retrieval-Augmented Generation (RAG) assistant designed to answer questions a user has. You use a corpus of documents that are all text based. Your primary goal is to provide accurate, up-to-date, and relevant information based on what the user asks and the documents you retrieve.\n\n## Responsibilities\n\n- Answer user queries with a good mix of being comprehensive but still concise\n- Present information in an easy-to-understand and professional manner  \n- Clarify misconceptions or misinformation\n\n## Other Key Information and Instructions\n\n- Always tell the user if you didn't find the answer. Don't make something up just to please them.\n- Keep your language neutral and factual. Do not show bias or opinion  \n\n## Error Handling\n- If the information cannot be found using the provided instructions respond with:  \n  “I’m sorry, I couldn’t find relevant information based on your documents.”\n"
+          "systemMessage": "=## Role\n\nYou are a Retrieval-Augmented Generation (RAG) assistant designed to answer questions a user has. You use a corpus of documents that are all text based. Your primary goal is to provide accurate, up-to-date, and relevant information based on what the user asks and the documents you retrieve.\n\n## Responsibilities\n\n- Answer user queries with a good mix of being comprehensive but still concise\n- Retrieve and synthesize relevant information from the given tools to perform RAG in the 'documents' table, and look up the documents available in your knowledge base in the 'document_metadata' table\n- Present information in an easy-to-understand and professional manner  \n- Clarify misconceptions or misinformation\n\n## Other Key Information and Instructions\n\n- Always start by performing RAG. If RAG doesn't help, then look at the documents that are available to you, find a few that you think would contain the answer, and then analyze those.\n- Always tell the user if you didn't find the answer. Don't make something up just to please them.\n- Keep your language neutral and factual. Do not show bias or opinion  \n\n## Error Handling\n- If the information cannot be found using the provided instructions respond with:  \n  “I’m sorry, I couldn’t find relevant information based on your documents.”\n"
         }
       },
       "id": "6c53c783-31b7-426e-95fb-4b8b64027812",
@@ -147,7 +153,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        380,
+        680,
         80
       ]
     },
@@ -174,7 +180,7 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        2560,
+        2800,
         1180
       ],
       "id": "503b8dd8-6eb6-4968-9428-3515df741446",
@@ -190,7 +196,7 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        100,
+        80,
         80
       ],
       "webhookId": "2e7c037a-cf2e-40c5-9bed-e0944cc03cfa"
@@ -205,8 +211,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1340,
-        780
+        1580,
+        640
       ]
     },
     {
@@ -221,8 +227,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1560,
-        640
+        1800,
+        780
       ]
     },
     {
@@ -235,8 +241,8 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.4,
       "position": [
-        1780,
-        780
+        2000,
+        640
       ]
     },
     {
@@ -252,8 +258,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1740,
-        1020
+        2100,
+        800
       ],
       "id": "df798fed-2d17-409d-8f00-d9b23358747d",
       "name": "OpenAI Chat Model3",
@@ -289,8 +295,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2140,
-        660
+        2380,
+        760
       ]
     },
     {
@@ -302,7 +308,7 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
       "typeVersion": 1.1,
       "position": [
-        2360,
+        2600,
         760
       ],
       "id": "448b2e44-3dfe-4ef5-9639-96c451072de4",
@@ -369,32 +375,11 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
       "position": [
-        880,
-        740
+        1100,
+        620
       ],
       "id": "b6425dff-128c-4f1c-88a7-e582789fc069",
       "name": "Read/Write Files from Disk"
-    },
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "-- Create a table to store your documents\ncreate table documents_reranking (\n  id bigserial primary key,\n  text text,\n  metadata jsonb,\n  embedding vector(1536) -- 1536 works for OpenAI embeddings, change if needed\n);\n-- Create a function to search for documents\ncreate function match_documents_reranking (\n  query_embedding vector(1536),\n  match_count int default null,\n  filter jsonb DEFAULT '{}'\n) returns table (\n  id bigint,\n  text text,\n  metadata jsonb,\n  similarity float\n)\nlanguage plpgsql\nas $$\n#variable_conflict use_column\nbegin\n  return query\n  select\n    id,\n    text,\n    metadata,\n    1 - (documents_reranking.embedding <=> query_embedding) as similarity\n  from documents_reranking\n  where metadata @> filter\n  order by documents_reranking.embedding <=> query_embedding\n  limit match_count;\nend;\n$$;",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.postgres",
-      "typeVersion": 2.6,
-      "position": [
-        1180,
-        280
-      ],
-      "id": "ebae020c-c574-4f5b-bdcf-7d24093ff64d",
-      "name": "Postgres",
-      "credentials": {
-        "postgres": {
-          "id": "UaTmh0frrACTMPxG",
-          "name": "Postgres account"
-        }
-      }
     },
     {
       "parameters": {
@@ -406,7 +391,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        880,
+        1380,
         160
       ],
       "id": "169e189c-8bf8-47f5-b8e1-13fed9af397e",
@@ -433,6 +418,12 @@
               "name": "file_title",
               "value": "={{ $json.path.split(/[\\\\/]/).pop().split('.').slice(0, -1).join('.'); }}",
               "type": "string"
+            },
+            {
+              "id": "9f39bb74-2045-4179-ab4e-e295fde61303",
+              "name": "file_url",
+              "value": "={{ 'file://' + encodeURI($json.path.replace(/\\\\/g, '/')) }}",
+              "type": "string"
             }
           ]
         },
@@ -454,11 +445,270 @@
       "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
       "typeVersion": 1,
       "position": [
-        640,
+        1180,
         300
       ],
       "id": "c8027479-416e-4101-8bba-644f96ef483c",
       "name": "Reranking RAG MCP Server"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE document_reranking_metadata (\n    id TEXT PRIMARY KEY,\n    title TEXT,\n    url TEXT,\n    created_at TIMESTAMP DEFAULT NOW(),\n    schema TEXT\n);",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1800,
+        280
+      ],
+      "id": "f92a2d67-c25a-4348-9377-d6b24659570b",
+      "name": "Create Document Metadata Table",
+      "credentials": {
+        "postgres": {
+          "id": "UaTmh0frrACTMPxG",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Create a table to store your documents\ncreate table documents_reranking (\n  id bigserial primary key,\n  text text,\n  metadata jsonb,\n  embedding vector(1536) -- 1536 works for OpenAI embeddings, change if needed\n);\n-- Create a function to search for documents\ncreate function match_documents_reranking (\n  query_embedding vector(1536),\n  match_count int default null,\n  filter jsonb DEFAULT '{}'\n) returns table (\n  id bigint,\n  text text,\n  metadata jsonb,\n  similarity float\n)\nlanguage plpgsql\nas $$\n#variable_conflict use_column\nbegin\n  return query\n  select\n    id,\n    text,\n    metadata,\n    1 - (documents_reranking.embedding <=> query_embedding) as similarity\n  from documents_reranking\n  where metadata @> filter\n  order by documents_reranking.embedding <=> query_embedding\n  limit match_count;\nend;\n$$;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1520,
+        280
+      ],
+      "id": "ebae020c-c574-4f5b-bdcf-7d24093ff64d",
+      "name": "Create Document Table",
+      "credentials": {
+        "postgres": {
+          "id": "UaTmh0frrACTMPxG",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "document_reranking_metadata",
+          "mode": "list",
+          "cachedResultName": "document_reranking_metadata"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Set File ID').item.json.file_id }}",
+            "title": "={{ $('Set File ID').item.json.file_title }}",
+            "url": "={{ $('Set File ID').item.json.file_url }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": true,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "url",
+              "displayName": "url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "schema",
+              "displayName": "schema",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        880,
+        760
+      ],
+      "id": "ab4e92b5-f46a-4a14-a6bf-4db9260e1796",
+      "name": "Insert Document Metadata",
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "UaTmh0frrACTMPxG",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to fetch all available documents, including the table schema if the file is a CSV or Excel file.",
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "document_reranking_metadata",
+          "mode": "list",
+          "cachedResultName": "document_reranking_metadata"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgresTool",
+      "typeVersion": 2.5,
+      "position": [
+        840,
+        300
+      ],
+      "id": "718c551c-15cc-4078-b9a4-4fce88f86eed",
+      "name": "List Documents",
+      "credentials": {
+        "postgres": {
+          "id": "UaTmh0frrACTMPxG",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Given a file ID, fetches the text from the document.",
+        "operation": "executeQuery",
+        "query": "SELECT \n    string_agg(text, ' ') as document_text\nFROM documents_reranking\n  WHERE metadata->>'file_id' = $1\nGROUP BY metadata->>'file_id';",
+        "options": {
+          "queryReplacement": "={{ $fromAI('file_id') }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgresTool",
+      "typeVersion": 2.5,
+      "position": [
+        1000,
+        300
+      ],
+      "id": "1212baf9-f3a2-4dbd-a757-ad28129e4382",
+      "name": "Get File Contents",
+      "credentials": {
+        "postgres": {
+          "id": "UaTmh0frrACTMPxG",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        260,
+        300
+      ],
+      "id": "2bc1b191-6511-4c15-9b70-36702f9e8d04",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "cL3Rz97TY4TerdNi",
+          "name": "OpenAi account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=## Context\nYou are a standalone Query Expansion AI Agent. You operate as the first step in a Retrieval‑Augmented Generation (RAG) system designed to answer questions. Your role is to take user queries and expand or rephrase them to make them more complete, specific, and information‑rich, so the downstream RAG agent can retrieve the most relevant data from its knowledge base.\n\n## Role\nYou do not access any external tools, databases, or documents. You do not provide answers. Your sole responsibility is to enhance the user’s query in a way that makes the user’s intent clearer and easier to process by the next stage of the system.\n\n## Responsibilities and Goals\n- Clarify vague or brief user queries\n- Add relevant context, terminology, and implied meaning  \n- Rephrase the query into a more specific and structured form while preserving the user’s intent  \n- Ensure the output remains a natural, information‑seeking query suitable for retrieval\n\n## Strict Boundaries and Rules\n- Only ever output a question (versus an answer)\n- Only output a single expanded query  \n\n## Final Notes\n- Your output will be passed directly to a retrieval system  \n- Ensure clarity, specificity, and neutrality  \n- Keep the output natural, readable, and focused on improving retrieval accuracy  "
+            },
+            {
+              "message": "="
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        300,
+        80
+      ],
+      "id": "407f9817-76b2-49ee-b24f-031aefc20d4d",
+      "name": "Query Expansion"
+    },
+    {
+      "parameters": {
+        "content": "# Dynamous Workshop - RAG with Re-ranking MCP Server\n\nThis n8n workflow enhances Retrieval-Augmented Generation (RAG) systems by incorporating a powerful re-ranking component through a dedicated MCP server. By adding this re-ranking layer, the workflow significantly improves the relevance and quality of retrieved documents before they reach the LLM.\n\n## Key Components\n\n### 1. RAG with Re-ranking\n- Dedicated MCP server provides cross-encoder re-ranking capabilities\n- Transforms standard vector search results into highly relevant, contextually appropriate documents\n- Significantly improves the quality of information fed to the LLM for response generation\n\n### 2. Cross-Encoder Advantage\n- Uses the powerful `cross-encoder/ms-marco-MiniLM-L-6-v2` model for document re-ranking\n- Performs pairwise comparisons between query and each document for superior relevance assessment\n- Outperforms traditional vector similarity by understanding semantic relationships between query and documents\n\n### 3. Integrated Search and Re-ranking\n- Single MCP tool handles both vector search and re-ranking in one seamless operation\n- Retrieves documents from Supabase using OpenAI embeddings\n- Automatically re-ranks results to prioritize the most relevant information\n\n## Technical Implementation\n- MCP server architecture for easy integration with AI agents\n- Supabase with pgvector for initial vector storage and retrieval\n- OpenAI embeddings for document representation\n- Cross-encoder model for sophisticated re-ranking\n\n## Performance Benefits\n- More accurate and relevant document retrieval\n- Reduced noise and irrelevant information reaching the LLM\n- Higher quality responses with less hallucination\n- Improved handling of complex or ambiguous queries\n\n## Ideal Use Cases\n- Complex question answering requiring precise information retrieval\n- Research applications where document relevance is critical\n- Any RAG system where quality of retrieved context impacts response accuracy\n\n## Why Add Re-ranking?\n\nRe-ranking represents a critical advancement in RAG systems by addressing the limitations of pure vector search. While vector search excels at finding generally related documents, re-ranking provides the crucial second pass that ensures the most relevant documents are prioritized. This MCP server makes implementing this powerful technique simple and accessible within any n8n workflow.",
+        "height": 1360,
+        "width": 640,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -660,
+        0
+      ],
+      "id": "30f7a6cd-f431-4ede-9fdf-25d494e91665",
+      "name": "Sticky Note8"
     }
   ],
   "pinData": {},
@@ -545,7 +795,7 @@
       "main": [
         [
           {
-            "node": "RAG AI Agent",
+            "node": "Query Expansion",
             "type": "main",
             "index": 0
           }
@@ -622,7 +872,7 @@
       "main": [
         [
           {
-            "node": "Read/Write Files from Disk",
+            "node": "Insert Document Metadata",
             "type": "main",
             "index": 0
           }
@@ -672,13 +922,68 @@
           }
         ]
       ]
+    },
+    "Insert Document Metadata": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Query Expansion",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Query Expansion": {
+      "main": [
+        [
+          {
+            "node": "RAG AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Documents": {
+      "ai_tool": [
+        [
+          {
+            "node": "RAG AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get File Contents": {
+      "ai_tool": [
+        [
+          {
+            "node": "RAG AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "0dd640ba-ba13-4394-ad87-cd38930b6f60",
+  "versionId": "0ac34722-3839-4cd1-afa3-7ed610fd0dee",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "73cb7a3e883df514bb47e8d1b34526d30e2abb8f56cd99f10d5948a1e11b25aa"
