@@ -1,0 +1,2628 @@
+{
+  "name": "n8n Masterclass",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "lead-capture",
+        "formDescription": "Interested in our services? Fill out this form and we'll get back to you soon!",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "First Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Last Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false,
+          "path": "lead-capture"
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        20,
+        40
+      ],
+      "id": "6a1575eb-6266-474c-b3c2-c07240b2a0d2",
+      "name": "On form submission",
+      "webhookId": "b7977027-5bc6-49c2-baa9-60a5463ca87b"
+    },
+    {
+      "parameters": {
+        "content": "## Types of Nodes in n8n",
+        "height": 1080,
+        "width": 1100
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -120
+      ],
+      "id": "d8166965-a3a4-4ed7-80cd-fd1e231870b4",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Triggers - The start of workflows",
+        "height": 260,
+        "width": 480,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        -40
+      ],
+      "id": "d046c4b7-a251-4306-9a35-30bf8d13fd10",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Actions - DO Things in Your Services",
+        "height": 260,
+        "width": 500,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        480,
+        -40
+      ],
+      "id": "b28291b0-715e-4b81-9d6c-fd5b4c9fb596",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8",
+          "mode": "list",
+          "cachedResultName": "Sample Google Sheet - Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Email": "test@gmail.com",
+            "Is Corporate?": "No",
+            "Form Submission Time": "={{ $now.format(\"yyyy-MM-dd HH:MM:ss\") }}",
+            "Name": "={{ $json.Name }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Is Corporate?",
+              "displayName": "Is Corporate?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Form Submission Time",
+              "displayName": "Form Submission Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        540,
+        40
+      ],
+      "id": "4f5c9cc1-486b-4d2f-a819-ff009f571820",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mOhJnahth3A2Swmh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Data Transformation Nodes",
+        "height": 260,
+        "width": 480,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        240
+      ],
+      "id": "b8a53c1e-d36e-4599-adee-c7383eca1b64",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f9c124a5-5395-4097-93ea-489d5f59c272",
+              "name": "Name",
+              "value": "Test Name!",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        20,
+        320
+      ],
+      "id": "f6a1c0fe-a275-491d-b740-a1dd1f718031",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        3300,
+        500
+      ],
+      "id": "e2bb6820-9536-4ecb-a803-29391425416d",
+      "name": "When chat message received",
+      "webhookId": "72089dee-ad92-4661-bb28-503e329dd9ba"
+    },
+    {
+      "parameters": {
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        760,
+        40
+      ],
+      "id": "740c7333-0174-405a-b190-9f5637556f9c",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Example: tag corporate emails\nitems.forEach(item => {\n  const domain = item.json.email.split('@')[1] || '';\n  item.json.isCorporate = !['gmail.com','yahoo.com','outlook.com']\n                            .includes(domain.toLowerCase());\n});\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        320
+      ],
+      "id": "9c34ae35-5882-4179-9e88-d11e3da652d9",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "content": "## Flow Control Nodes",
+        "height": 260,
+        "width": 500,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        480,
+        240
+      ],
+      "id": "fa1000fb-64b0-41c1-961a-4f4fcdc955da",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cd51ba84-8819-4fc5-92d4-2bad6b0fced6",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        320
+      ],
+      "id": "012de6b7-18b3-4cf7-857b-89f048f5cee3",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        760,
+        320
+      ],
+      "id": "4d66c196-959c-4c6d-b9b4-f5b8906906f4",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "content": "## AI Nodes",
+        "height": 400,
+        "width": 1020,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        520
+      ],
+      "id": "23cb045f-b9ca-476f-b7cd-a38a4a2b3943",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        120,
+        580
+      ],
+      "id": "024966d2-f71d-43aa-be24-e7d86e97976f",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        40,
+        780
+      ],
+      "id": "b44f5f4c-b642-4d52-a3de-2830018a80cf",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "7VTQdbi0YM9Akoth",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        220,
+        780
+      ],
+      "id": "97fc67a3-2873-4597-931d-626142657add",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "JVgHZYH8IWfxISUx",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8",
+          "mode": "list",
+          "cachedResultName": "Sample Google Sheet - Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Name', ``, 'string') }}",
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', ``, 'string') }}",
+            "Is Corporate?": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Is_Corporate_', ``, 'string') }}",
+            "Form Submission Time": "={{ $now.format(\"yyyy-MM-dd HH:MM:ss\") }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Is Corporate?",
+              "displayName": "Is Corporate?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Form Submission Time",
+              "displayName": "Form Submission Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        400,
+        780
+      ],
+      "id": "1f003e58-affa-4fd2-8018-f212ee00c323",
+      "name": "Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mOhJnahth3A2Swmh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        560,
+        580
+      ],
+      "id": "fa55c6a9-6c24-4119-952f-af95b95424bd",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        660,
+        780
+      ],
+      "id": "5afba818-c9cf-4a21-8877-eda4c540c880",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "7VTQdbi0YM9Akoth",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Welcome to the n8n Masterclass! 🚀\n\nHere we'll dive into mastering the core concepts for n8n and building AI agents within it so you can feel confident getting started no matter what you want to automate!\n\n## What is n8n?\n\nn8n (pronounced \"n-eight-n\", short for nodenation) is a workflow automation platform that lets you connect apps, services, and APIs together without breaking the bank or your sanity. Think of it as the Swiss Army knife of automation - it does everything you need, and it does it well.\n\n## Why n8n is Different\n\n### 💰 Actually Affordable\nn8n is a fraction of the cost of other automation platforms like Zapier and Make.com. Also, you can self-host it on a $5/month server.\n\n### 🔓 Open Source Freedom\nn8n is fair-code licensed, meaning you get the source code and can modify it however you want. No vendor lock-in, no surprise pricing changes, very little \"sorry, that feature is only in our enterprise plan\".\n\n### 🤖 Built for AI Agents\nHere's the big one - while other platforms treat AI as an afterthought, n8n was designed with AI agents in mind. You get:\n- Native AI agent nodes\n- Built-in memory management\n- RAG (Retrieval Augmented Generation) capabilities\n- Vector database integrations\n- Multi-agent workflows\n\n## Why I Love n8n\n\n- **Flexibility**: Code when you need it, visual when you don't\n- **Power**: Handle complex multi-step AI workflows\n- **Control**: Self-host to protect your sensitive data\n\n## What You'll Learn Today\n\nBy the end of this session, you'll know how to:\n- Navigate n8n like a pro\n- Build workflows that actually solve real problems\n- Create AI agents that can access your data\n- Set up RAG systems that don't hallucinate",
+        "height": 1080,
+        "width": 920,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1020,
+        -120
+      ],
+      "id": "ffb6b5e9-d426-449a-b64c-00c57770eeb4",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "# n8n Data Types Quick Reference 📊\n\nUnderstanding data types is crucial for building workflows that actually work. We have:\n\n## String (Text)\n**What it is:** Any text data - names, emails, messages, descriptions.  \n**When you see it:** Form submissions, email content, user names, file paths.\n**Example:** Elon Musk, elonmusk@tesla.com, /home/elonmusk/all-secret-tesla-plans.txt\n\n## Number\n**What it is:** Numerical values for calculations and comparisons.  \n**When you see it:** Prices, quantities, user IDs, timestamps, scores.\n**Example:** 1000, 543532452345\n\n## Date and Time\n**What it is:** Time-based data that n8n can parse and manipulate.  \n**When you see it:** Form submission times, calendar events, file creation dates, scheduled tasks.\n**Example:** 2025-05-23, 2025-01-17 12:18:00, May 23rd, 2025\n\n## Boolean\n**What it is:** True/false values used for conditional logic.  \n**When you see it:** Checkbox responses, status flags (active/inactive), approval states, feature toggles.\n**Example:** true, false\n\n## Array\n**What it is:** A list of items - could be strings, numbers, or objects.  \n**When you see it:** Multiple email recipients, list of files, search results, multiple form responses.\n**Example:** [1, 2, 3, 4], [\"Elon Musk\", \"Jeff Bezos\", \"Sam Altman\"]\n\n## Object (JSON)\n**What it is:** Structured data with key-value pairs (like a row in a spreadsheet).  \n**When you see it:** Individual form submissions, user profiles, API responses, database records.\n**Example:** {\"name\": \"Cole Medin\", \"interests\": [\"Spicy Mango\", \"AI\"], \"is_chess_grandmaster\": false}\n\n## Pro Tips\n- **Arrays contain multiple items** - you'll often need to loop through them\n- **Objects contain related data** - perfect for passing complete records between nodes\n- **Mix and match** - Arrays can contain objects, objects can contain arrays\n\n---\n\n*Master these data types and n8n workflows become much easier to debug and build!*",
+        "height": 1080,
+        "width": 760,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2460,
+        -120
+      ],
+      "id": "f06ee419-05e5-41b6-b589-32b80e626e04",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U08S4Q86MR7",
+          "mode": "list",
+          "cachedResultName": "cole"
+        },
+        "text": "=New corporate lead! This is a high priority lead.\n\nName: {{ $('Code1').item.json.fullname }}\nEmail: {{ $('Code1').item.json.email }}",
+        "otherOptions": {
+          "includeLinkToWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        2220,
+        -20
+      ],
+      "id": "7a09ed5a-3c68-41d3-b605-9daf3b99b398",
+      "name": "Slack",
+      "webhookId": "72e91160-1be1-4e9b-ad5d-1d74b490b009",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "kB5STlyG0pOgnomy",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f25092e7-cd3c-479f-b80d-dd90ab543f39",
+              "name": "fullname",
+              "value": "={{ $json['First Name'] + \" \" + $json['Last Name'] }}",
+              "type": "string"
+            },
+            {
+              "id": "beaf9869-4360-4b1b-82c0-79e49826f8d2",
+              "name": "email",
+              "value": "={{ $json.Email }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1320,
+        120
+      ],
+      "id": "15968945-27c0-4a8c-86bc-e2f4d9535bf6",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Example: tag corporate emails\nitems.forEach(item => {\n  const domain = item.json.email.split('@')[1] || '';\n  item.json.isCorporate = !['gmail.com','yahoo.com','outlook.com']\n                            .includes(domain.toLowerCase());\n});\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        120
+      ],
+      "id": "98b5a290-8426-422d-9667-6728b0c200f2",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8",
+          "mode": "list",
+          "cachedResultName": "Sample Google Sheet - Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.fullname }}",
+            "Email": "={{ $json.email }}",
+            "Is Corporate?": "={{ $json.isCorporate ? \"Yes\" : \"No\" }}",
+            "Form Submission Time": "={{ $now.format(\"yyyy-MM-dd HH:MM:ss\") }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Is Corporate?",
+              "displayName": "Is Corporate?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Form Submission Time",
+              "displayName": "Form Submission Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1740,
+        120
+      ],
+      "id": "3cda4761-e931-4c0c-ae10-ce5eeef1eae1",
+      "name": "Google Sheets2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mOhJnahth3A2Swmh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "lead-capture",
+        "formDescription": "Interested in our services? Fill out this form and we'll get back to you soon!",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "First Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Last Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false,
+          "path": "lead-form"
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        1100,
+        120
+      ],
+      "id": "03570c3e-a5e5-4f92-92af-0e912e7a5396",
+      "name": "On form submission2",
+      "webhookId": "614c98bd-ac54-4a47-afe4-50620defe78d"
+    },
+    {
+      "parameters": {
+        "content": "## Our First Workflow",
+        "height": 580,
+        "width": 1400,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -120
+      ],
+      "id": "3df8c275-c15e-466b-a338-722dfb7aeeb2",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4195254f-92ee-4cd1-ab4a-5ea111b248f0",
+              "leftValue": "={{ $('Code1').item.json.isCorporate }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1960,
+        120
+      ],
+      "id": "0cbdba68-d5e0-4bcd-876f-f7d1b537d32b",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U08S4Q86MR7",
+          "mode": "list",
+          "cachedResultName": "cole"
+        },
+        "text": "=New lead!\n\nName: {{ $('Code1').item.json.fullname }}\nEmail: {{ $('Code1').item.json.email }}",
+        "otherOptions": {
+          "includeLinkToWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        2220,
+        240
+      ],
+      "id": "33e93e4c-c57e-49bd-9c8d-752c1062dfaf",
+      "name": "Slack1",
+      "webhookId": "72e91160-1be1-4e9b-ad5d-1d74b490b009",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "kB5STlyG0pOgnomy",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## APIs and multiple output items ([n8n API Guide](https://blog.n8n.io/api-integration/))",
+        "height": 480,
+        "width": 1400,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        480
+      ],
+      "id": "fcf37bfc-69bc-4576-bcf9-61800bcb19bf",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        660
+      ],
+      "id": "20b08b31-cd15-4540-960e-6cc44257da9e",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8",
+          "mode": "list",
+          "cachedResultName": "Sample Google Sheet - Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 131819905,
+          "mode": "list",
+          "cachedResultName": "Researched Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit#gid=131819905"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1380,
+        660
+      ],
+      "id": "516d9df1-6f02-49f3-a039-a4817102c8cb",
+      "name": "Google Sheets3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mOhJnahth3A2Swmh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.search.brave.com/res/v1/web/search?q={{ $json.Name }}&summary=1",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1620,
+        660
+      ],
+      "id": "87c03c1b-8778-498e-ae0c-346eb74fd538",
+      "name": "HTTP Request1",
+      "executeOnce": false,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "KZ0Dbyv01IvticRR",
+          "name": "Brave API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8",
+          "mode": "list",
+          "cachedResultName": "Sample Google Sheet - Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 131819905,
+          "mode": "list",
+          "cachedResultName": "Researched Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit#gid=131819905"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('Google Sheets3').item.json.Name }}",
+            "Lead Research": "={{ $json.summary }}"
+          },
+          "matchingColumns": [
+            "Name"
+          ],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead Research",
+              "displayName": "Lead Research",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        2160,
+        660
+      ],
+      "id": "562eab51-d70a-4f97-afba-0b60a2084a5e",
+      "name": "Google Sheets4",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mOhJnahth3A2Swmh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.search.brave.com/res/v1/summarizer/search?key={{ $json.summarizer.key }}&entity_info=1",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9643db26-4631-4518-a321-475801fcbb9e",
+      "name": "Summarize Web Research",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1880,
+        660
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "KZ0Dbyv01IvticRR",
+          "name": "Brave API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Introducing AI into n8n Automations",
+        "height": 480,
+        "width": 1580,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        -120
+      ],
+      "id": "26deb925-5ec5-455f-a87e-4cc50d6914b4",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8",
+          "mode": "list",
+          "cachedResultName": "Sample Google Sheet - Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 131819905,
+          "mode": "list",
+          "cachedResultName": "Researched Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit#gid=131819905"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        3540,
+        40
+      ],
+      "id": "52f3990d-ac7d-4526-883c-e838e6efcd48",
+      "name": "Google Sheets5",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mOhJnahth3A2Swmh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.search.brave.com/res/v1/web/search?q={{ $json.Name }}&summary=1",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3760,
+        40
+      ],
+      "id": "951caa97-7e8f-45f5-bbf8-e2dc54e023db",
+      "name": "HTTP Request2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "KZ0Dbyv01IvticRR",
+          "name": "Brave API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8",
+          "mode": "list",
+          "cachedResultName": "Sample Google Sheet - Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 131819905,
+          "mode": "list",
+          "cachedResultName": "Researched Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit#gid=131819905"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('Google Sheets5').item.json.Name }}",
+            "Lead Research": "={{ $json.text }}"
+          },
+          "matchingColumns": [
+            "Name"
+          ],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Lead Research",
+              "displayName": "Lead Research",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        4600,
+        40
+      ],
+      "id": "db4acce4-ab2a-4d12-8a02-b76f22b21e20",
+      "name": "Google Sheets6",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mOhJnahth3A2Swmh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.search.brave.com/res/v1/summarizer/search?key={{ $json.summarizer.key }}&entity_info=1",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "395d0146-e53f-474a-b4d4-92599f185d2b",
+      "name": "Summarize Web Research1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4000,
+        40
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "KZ0Dbyv01IvticRR",
+          "name": "Brave API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Here is a bunch of information about a person. Please summarize this into just two sentences and then add a sentence at the end focusing on how we could provide value to them.\n\n{{ JSON.stringify($json.summary) }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        4220,
+        40
+      ],
+      "id": "b44988a8-5928-4419-b876-a34b20f84578",
+      "name": "Basic LLM Chain1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4320,
+        220
+      ],
+      "id": "dcfb1ddb-cc27-49ee-8dee-ac47baa88133",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "7VTQdbi0YM9Akoth",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "6404c919-65dd-465c-ad4a-f287acd7ab9b",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        220,
+        40
+      ],
+      "id": "a06da4cd-2a52-43a8-9b46-a9c90bc51aca",
+      "name": "Webhook",
+      "webhookId": "6404c919-65dd-465c-ad4a-f287acd7ab9b"
+    },
+    {
+      "parameters": {
+        "content": "## AI Agents",
+        "height": 580,
+        "width": 1580,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        380
+      ],
+      "id": "4b3e2d38-678b-4ad9-a904-f8571eab61c5",
+      "name": "Sticky Note14"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful research assistant. The user will ask you to research people that are in a Google Sheet, and/or add people to the Google Sheet.\n\nIf you are tasked to research someone not in the Google Sheet, add them first."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        3500,
+        500
+      ],
+      "id": "35873b44-28f3-4886-8e02-4b95bbf88cdc",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3300,
+        760
+      ],
+      "id": "3ad7b353-fdbb-479f-9dd1-ae2c7669f712",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "7VTQdbi0YM9Akoth",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        3460,
+        760
+      ],
+      "id": "082ff404-055c-44c2-b637-cb943b5545a6",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Add a lead to the Google Sheet as long as you have the name and email",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8",
+          "mode": "list",
+          "cachedResultName": "Sample Google Sheet - Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 131819905,
+          "mode": "list",
+          "cachedResultName": "Researched Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit#gid=131819905"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Name', ``, 'string') }}",
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead Research",
+              "displayName": "Lead Research",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        3600,
+        720
+      ],
+      "id": "95066622-c81d-49b8-910c-196f30f5bf68",
+      "name": "Google Sheets7",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mOhJnahth3A2Swmh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Get the leads already in the Google Sheet",
+        "documentId": {
+          "__rl": true,
+          "value": "1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8",
+          "mode": "list",
+          "cachedResultName": "Sample Google Sheet - Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 131819905,
+          "mode": "list",
+          "cachedResultName": "Researched Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit#gid=131819905"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        3740,
+        800
+      ],
+      "id": "2e977251-17bb-482d-a27d-fa53ca87e1bb",
+      "name": "Google Sheets8",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mOhJnahth3A2Swmh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "Call this tool to research a lead once you have their full name. This tool will also update the Google Sheet with the research once it is complete.",
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "full_name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('full_name', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "full_name"
+          ],
+          "schema": [
+            {
+              "id": "full_name",
+              "displayName": "full_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        3840,
+        680
+      ],
+      "id": "c281d006-0834-4190-9d6a-745425a827c1",
+      "name": "Call n8n Workflow Tool"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.search.brave.com/res/v1/web/search?q={{ $json.full_name }}&summary=1",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4120,
+        660
+      ],
+      "id": "ddb0ee71-db36-4310-982c-2765529dcfa0",
+      "name": "HTTP Request3",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "KZ0Dbyv01IvticRR",
+          "name": "Brave API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8",
+          "mode": "list",
+          "cachedResultName": "Sample Google Sheet - Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 131819905,
+          "mode": "list",
+          "cachedResultName": "Researched Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pKLuaO9KPyOJtsMEac_qjhjfRDP0zzYVMNXrmmwM2v8/edit#gid=131819905"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Lead Research": "={{ $json.text }}",
+            "Name": "={{ $('When Executed by Another Workflow').item.json.full_name }}"
+          },
+          "matchingColumns": [
+            "Name"
+          ],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Lead Research",
+              "displayName": "Lead Research",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        4600,
+        660
+      ],
+      "id": "0dc43ab5-fa64-4c4e-8f88-2abb9850f0eb",
+      "name": "Google Sheets9",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mOhJnahth3A2Swmh",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "full_name"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        3940,
+        500
+      ],
+      "id": "fc8291dc-a0ad-4382-8434-ca435edecf01",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Here is a bunch of information about a person. Please summarize this into just two sentences and then add a sentence at the end focusing on how we could provide value to them.\n\n{{ JSON.stringify($json.web) }}\n\n{{ JSON.stringify($json.discussions) }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        4280,
+        500
+      ],
+      "id": "6631b9a8-75d3-4178-a635-afa70cadca40",
+      "name": "Basic LLM Chain2"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4400,
+        680
+      ],
+      "id": "525d085e-78e1-4e6b-a771-2e3766683ae5",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "7VTQdbi0YM9Akoth",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Move \"Trigger Manually\" Trigger Here",
+        "height": 300
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3260,
+        -40
+      ],
+      "id": "1f2acf9f-4090-4d34-8c37-62d2d5018aaf",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "content": "## RAG Pipeline",
+        "height": 580,
+        "width": 1120,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4840,
+        380
+      ],
+      "id": "c6c85969-e618-43ed-a8b9-82432ab584fa",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1Bq-KqXmWRWEaes346HwYzZbVSyJSjhcZ",
+          "mode": "list",
+          "cachedResultName": "n8n Masterclass",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1Bq-KqXmWRWEaes346HwYzZbVSyJSjhcZ"
+        },
+        "event": "fileCreated",
+        "options": {
+          "fileType": "application/vnd.google-apps.document"
+        }
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        4900,
+        460
+      ],
+      "id": "6c20b663-1743-4b7d-8965-812cfc702c1a",
+      "name": "Google Drive Trigger",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "nDOlw7koG0PulF67",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1Bq-KqXmWRWEaes346HwYzZbVSyJSjhcZ",
+          "mode": "list",
+          "cachedResultName": "n8n Masterclass",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1Bq-KqXmWRWEaes346HwYzZbVSyJSjhcZ"
+        },
+        "event": "fileUpdated",
+        "options": {
+          "fileType": "application/vnd.google-apps.document"
+        }
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        4900,
+        680
+      ],
+      "id": "ad3ac9c7-5a50-490f-8a11-aa09ed5686a8",
+      "name": "Google Drive Trigger1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "nDOlw7koG0PulF67",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "text/plain"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        5160,
+        460
+      ],
+      "id": "c03a67ed-10cc-4dcd-a52f-20e5e9c79dfc",
+      "name": "Google Drive",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "nDOlw7koG0PulF67",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        5380,
+        460
+      ],
+      "id": "ed7fe92d-8cd1-478a-b6cd-d2301534a2d8",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "mode": "insert"
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.1,
+      "position": [
+        5600,
+        460
+      ],
+      "id": "e7b6a67a-db94-4ab4-a964-be9e91e9fb44",
+      "name": "Simple Vector Store"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5440,
+        760
+      ],
+      "id": "748d662d-a673-4762-b660-b1ebadaa082f",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "7VTQdbi0YM9Akoth",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        5620,
+        660
+      ],
+      "id": "8a30cea5-8b8e-4396-88f8-0648a5d7b1f0",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "chunkSize": 400,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        5720,
+        800
+      ],
+      "id": "1f96b943-c922-4124-b6cc-cc0ec4773c70",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "content": "## RAG AI Agent",
+        "height": 480,
+        "width": 1120,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4840,
+        -120
+      ],
+      "id": "b04b2b22-cc1b-43fe-831e-138a4009d776",
+      "name": "Sticky Note13"
+    },
+    {
+      "parameters": {
+        "content": "Move \"Chat\" Trigger Here",
+        "height": 260,
+        "width": 260
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4860,
+        -60
+      ],
+      "id": "80a2300a-4ec5-4369-89d8-2e14f309d040",
+      "name": "Sticky Note15"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are a helpful research assistant. The user will ask you to research people that are in a Google Sheet, and/or add people to the Google Sheet.\n\nIf you are tasked to research someone not in the Google Sheet, add them first."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        5220,
+        0
+      ],
+      "id": "826c0aa5-3a0b-4f6b-9513-7b246615d59e",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5160,
+        180
+      ],
+      "id": "d672d8ae-58a8-4687-b7e1-7acdc23d780e",
+      "name": "OpenAI Chat Model5",
+      "credentials": {
+        "openAiApi": {
+          "id": "7VTQdbi0YM9Akoth",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        5320,
+        180
+      ],
+      "id": "54de9a36-84a6-421e-ad70-21a05d6711df",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolName": "company_data",
+        "toolDescription": "Use this tool to perform RAG to get information about the company."
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.1,
+      "position": [
+        5620,
+        20
+      ],
+      "id": "146d59ff-79be-47cb-a9b1-e023190967fb",
+      "name": "Simple Vector Store1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5720,
+        180
+      ],
+      "id": "26b39964-c82e-4b04-a15f-d1503cbd27e8",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "7VTQdbi0YM9Akoth",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "full_name": "Cole Medin"
+        }
+      }
+    ],
+    "Google Drive Trigger1": [
+      {
+        "json": {
+          "exportLinks": {
+            "application/rtf": "https://docs.google.com/feeds/download/documents/export/Export?id=1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI&exportFormat=rtf",
+            "application/vnd.oasis.opendocument.text": "https://docs.google.com/feeds/download/documents/export/Export?id=1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI&exportFormat=odt",
+            "text/html": "https://docs.google.com/feeds/download/documents/export/Export?id=1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI&exportFormat=html",
+            "application/pdf": "https://docs.google.com/feeds/download/documents/export/Export?id=1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI&exportFormat=pdf",
+            "text/x-markdown": "https://docs.google.com/feeds/download/documents/export/Export?id=1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI&exportFormat=markdown",
+            "text/markdown": "https://docs.google.com/feeds/download/documents/export/Export?id=1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI&exportFormat=markdown",
+            "application/epub+zip": "https://docs.google.com/feeds/download/documents/export/Export?id=1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI&exportFormat=epub",
+            "application/zip": "https://docs.google.com/feeds/download/documents/export/Export?id=1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI&exportFormat=zip",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "https://docs.google.com/feeds/download/documents/export/Export?id=1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI&exportFormat=docx",
+            "text/plain": "https://docs.google.com/feeds/download/documents/export/Export?id=1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI&exportFormat=txt"
+          },
+          "parents": [
+            "1Bq-KqXmWRWEaes346HwYzZbVSyJSjhcZ"
+          ],
+          "lastModifyingUser": {
+            "displayName": "Cole Medin",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "13750526139593121124",
+            "emailAddress": "cole@dynamous.ai",
+            "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKWk1Xb5xCIgA9cyft4qs5VyP2z2RobbP5L4tWTj4mbZJY-rw4=s64"
+          },
+          "owners": [
+            {
+              "displayName": "Cole Medin",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "13750526139593121124",
+              "emailAddress": "cole@dynamous.ai",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKWk1Xb5xCIgA9cyft4qs5VyP2z2RobbP5L4tWTj4mbZJY-rw4=s64"
+            }
+          ],
+          "permissions": [
+            {
+              "kind": "drive#permission",
+              "id": "09977272590194342579",
+              "type": "user",
+              "emailAddress": "sydney@chayahfitness.com",
+              "role": "writer",
+              "displayName": "sydney",
+              "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjWvs542qEOO38EgEZuEF3QKmHRjd3q6ORFJTCcRlyaTvH8ZcK_S=s64",
+              "deleted": false,
+              "pendingOwner": false
+            },
+            {
+              "kind": "drive#permission",
+              "id": "08041521795079813981",
+              "type": "user",
+              "emailAddress": "cole@chayahfitness.com",
+              "role": "writer",
+              "displayName": "cole",
+              "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjVWnHC-YwRx7VmAIw58yDG0Msc6WDILRNZHJQlicrRd4QizBRs=s64",
+              "deleted": false,
+              "pendingOwner": false
+            },
+            {
+              "kind": "drive#permission",
+              "id": "13750526139593121124",
+              "type": "user",
+              "emailAddress": "cole@dynamous.ai",
+              "role": "owner",
+              "displayName": "Cole Medin",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKWk1Xb5xCIgA9cyft4qs5VyP2z2RobbP5L4tWTj4mbZJY-rw4=s64",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "spaces": [
+            "drive"
+          ],
+          "capabilities": {
+            "canAcceptOwnership": false,
+            "canAddChildren": false,
+            "canAddMyDriveParent": false,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canChangeViewersCanCopyContent": true,
+            "canComment": true,
+            "canCopy": true,
+            "canDelete": true,
+            "canDisableInheritedPermissions": false,
+            "canDownload": true,
+            "canEdit": true,
+            "canEnableInheritedPermissions": true,
+            "canListChildren": false,
+            "canModifyContent": true,
+            "canModifyContentRestriction": true,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canModifyLabels": false,
+            "canMoveChildrenWithinDrive": false,
+            "canMoveItemIntoTeamDrive": true,
+            "canMoveItemOutOfDrive": true,
+            "canMoveItemWithinDrive": true,
+            "canReadLabels": false,
+            "canReadRevisions": true,
+            "canRemoveChildren": false,
+            "canRemoveContentRestriction": false,
+            "canRemoveMyDriveParent": true,
+            "canRename": true,
+            "canShare": true,
+            "canTrash": true,
+            "canUntrash": true
+          },
+          "permissionIds": [
+            "09977272590194342579",
+            "08041521795079813981",
+            "13750526139593121124"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "kind": "drive#file",
+          "id": "1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI",
+          "name": "Goals for the Organization",
+          "mimeType": "application/vnd.google-apps.document",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "version": "10",
+          "webViewLink": "https://docs.google.com/document/d/1oqhLgF7p9zObMqj3nK0VyRE6-4F9ZR30-7p4TZM-TsI/edit?usp=drivesdk",
+          "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document",
+          "hasThumbnail": true,
+          "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNeQFMzc1vKuYCXhylbHOxVkAAtyCIWvDLC2ipGOTnWvB71TQJsi3ZnZhxRadSbjLs8CSO3aCkPV3duPfv710eBxaFUCFD2I02ewJE8Zgwz5yLiH3j1ir31UWuWeg=s220",
+          "thumbnailVersion": "1",
+          "viewedByMe": true,
+          "viewedByMeTime": "2025-05-23T13:54:22.408Z",
+          "createdTime": "2025-05-23T13:49:22.419Z",
+          "modifiedTime": "2025-05-23T13:54:22.408Z",
+          "modifiedByMeTime": "2025-05-23T13:54:22.408Z",
+          "modifiedByMe": true,
+          "shared": true,
+          "ownedByMe": true,
+          "viewersCanCopyContent": true,
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "size": "1024",
+          "quotaBytesUsed": "1024",
+          "isAppAuthorized": false,
+          "inheritedPermissionsDisabled": false
+        }
+      }
+    ],
+    "On form submission2": [
+      {
+        "json": {
+          "First Name": "Cole",
+          "Last Name": "Medin",
+          "Email": "colemedin@yahoo.com",
+          "submittedAt": "2025-05-23T11:39:03.264-05:00",
+          "formMode": "test"
+        }
+      }
+    ],
+    "Google Sheets2": [
+      {
+        "json": {
+          "Name": "Cole Medin",
+          "Email": "colemedin@yahoo.com",
+          "Is Corporate?": "No",
+          "Form Submission Time": "2025-05-23 11:05:11"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "If": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets2": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Slack1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Summarize Web Research",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize Web Research": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets5": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Summarize Web Research1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize Web Research1": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets7": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets8": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call n8n Workflow Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain2": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Simple Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Simple Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Simple Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Vector Store1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1dcf4d84-e57f-46ce-8460-df6be738fe52",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4f88d03153ded61e8d8a2e9e3484a17f49a44679f0da9879edfd80ef817c81ff"
+  },
+  "id": "lwNty4VFnJcogFew",
+  "tags": []
+}
