@@ -226,7 +226,7 @@ git diff HEAD~1 HEAD
 1. Familiarize yourself with the commands in `.claude/commands`. Any markdown file in this folder can be used as a "slash" command in Claude code like:
 
 ```bash
-/prep-parallel.md [FEATURE_NAME] [NUMBER_OF_PARALLEL_WORKTREES]
+/prep-parallel "[FEATURE_NAME]" "[NUMBER_OF_PARALLEL_WORKTREES]"
 ```
 
 Where the parameters in brackets are what you define when you run the command.
@@ -234,7 +234,7 @@ Where the parameters in brackets are what you define when you run the command.
 2. Within Claude Code, execute the command:
 
 ```bash
-/prep-parallel.md simple-cli 3
+/prep-parallel simple-cli 3
 ```
 
 This will create three folders in `trees/` - `simple-cli-1`, `simple-cli-2`, and `simple-cli-3`
@@ -244,7 +244,7 @@ This will create three folders in `trees/` - `simple-cli-1`, `simple-cli-2`, and
 4. Execute the command in Claude Code:
 
 ```bash
-/execute-parallel.md simple-cli plan.md 3
+/execute-parallel simple-cli plan.md 3
 ```
 
 Claude Code will now kick off multiple agents in parallel tackling different versions of the same feature. Each version will be different simply because LLMs are not deterministic. The instructions are the same for each worktree, but the output will always be different for more than extremely simple features.
