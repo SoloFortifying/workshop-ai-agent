@@ -9,6 +9,7 @@ The code above (in this folder) represents the complete example of this integrat
 ## Prerequisites
 - Node.js installed on your machine
 - A Cloudflare account (free tier works)
+- OpenAI API Key
 
 ## Step 1: Install Wrangler CLI
 ```bash
