@@ -192,17 +192,20 @@ const historyFunFact = tool({
 export const historyTutorAgent = new Agent({
   name: 'History Tutor',
   instructions: 'You provide assistance with historical queries. Explain important events and context clearly.',
+  model: 'gpt-4.1-mini',
   tools: [historyFunFact],
 });
 
 export const mathTutorAgent = new Agent({
   name: 'Math Tutor',
   instructions: 'You provide help with math problems. Explain your reasoning at each step and include examples',
+  model: 'gpt-4.1-mini',
 });
 
 export const triageAgent = new Agent({
   name: 'Triage Agent',
   instructions: "You determine which agent to use based on the user's homework question",
+  model: 'gpt-4.1-mini',
   handoffs: [historyTutorAgent, mathTutorAgent],
 });
 ```
